@@ -10,9 +10,9 @@ import java.util.List;
 
 @Service
 public class HotelService {
+    @Autowired
     private final HotelRepository hotelRepo;
 
-    @Autowired
     public HotelService(HotelRepository hotelRepo) {
         this.hotelRepo = hotelRepo;
     }
@@ -21,8 +21,8 @@ public class HotelService {
         return hotelRepo.getHotelWithMostFacilities();
     }
     
-    public Hotel updateFacilities(String hotelName, List<Facility> newFacilities) {
-        return hotelRepo.updateFacilities(hotelName, newFacilities);
+    public Hotel updateFacilities(List<Facility> newFacilities, String hotelName) {
+        return hotelRepo.updateFacilities(newFacilities, hotelName);
     }
 
     public boolean addHotel(Hotel hotel) {

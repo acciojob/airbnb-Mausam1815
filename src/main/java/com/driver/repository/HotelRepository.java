@@ -28,15 +28,17 @@ public class HotelRepository {
         return hotelWithMostFacilities;
     }
 
-    public Hotel updateFacilities(String hotelName, List<Facility> newFacilities) {
+    public Hotel updateFacilities(List<Facility> newFacilities, String hotelName) {
         if(hotelDB.get(hotelName) != null) {
             Hotel hotel = hotelDB.get(hotelName);
             List<Facility> facilities = hotel.getFacilities();
+
             for(Facility facility : newFacilities) {
                 if(!facilities.contains(facility)) {
                     facilities.add(facility);
                 }
             }
+
             hotel.setFacilities(facilities);
             return hotel;
         }

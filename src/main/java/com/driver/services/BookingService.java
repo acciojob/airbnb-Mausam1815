@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class BookingService {
+    @Autowired
     private final BookingRepository bookingRepo;
 
-    @Autowired
     public BookingService(BookingRepository bookingRepo) {
         this.bookingRepo = bookingRepo;
     }

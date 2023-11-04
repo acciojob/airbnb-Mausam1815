@@ -4,6 +4,7 @@ import com.driver.model.Booking;
 import com.driver.model.Facility;
 import com.driver.model.Hotel;
 import com.driver.model.User;
+import com.driver.repository.HotelRepository;
 import com.driver.services.BookingService;
 import com.driver.services.HotelService;
 import com.driver.services.UserService;
@@ -22,11 +23,6 @@ public class HotelManagementController {
     @Autowired
     private BookingService bookingService;
 
-    public HotelManagementController(HotelService hotelService, UserService userService, BookingService bookingService) {
-        this.hotelService = hotelService;
-        this.userService = userService;
-        this.bookingService = bookingService;
-    }
 
     @PostMapping("/add-hotel")
     public String addHotel(@RequestBody Hotel hotel){
@@ -86,7 +82,7 @@ public class HotelManagementController {
         //If the hotel is already having that facility ignore that facility otherwise add that facility in the hotelDb
         //return the final updated List of facilities and also update that in your hotelDb
         //Note that newFacilities can also have duplicate facilities possible
-        return hotelService.updateFacilities(hotelName, newFacilities);
+        return hotelService.updateFacilities(newFacilities, hotelName);
     }
 
 }
